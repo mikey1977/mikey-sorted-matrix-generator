@@ -2,19 +2,26 @@
 
 function generator (rowLength, colLength) {
   var container = [];
+  var numberContainer = [];
+  var product = (rowLength * colLength);
+  for (var h = 0; h < product; h++) {
+    numberContainer.push(Math.floor( Math.random() * 100));
+  }
+
+  //sort numberContainer
+  numberContainer.sort();
 
   for (var i = 0; i < rowLength; i++) {
     var row = [];
     container.push(row);
-      for (var j = 0; j < colLength; j++) {
-    var col = Math.floor( Math.random() * 100);
 
-    row.push(col);
+    for (var j = 0; j < colLength; j++) {
+      var col = numberContainer.shift();
+
+      row.push(col);
+
+    }
   }
-  for (var k = 0; k < container.length; k++) {
-    row.sort();
-  }
- }
 console.log(container);
 }
-generator(3, 3);
+console.log(generator(3, 3));
